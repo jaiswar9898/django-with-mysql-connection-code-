@@ -1,0 +1,14 @@
+from django.shortcuts import render,redirect 
+from blog.forms import FormRegisterForm
+from blog.models import RegisteredForms
+
+
+def Register(request):
+    form = FormRegisterForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+    context={'FormRegisterForm':FormRegisterForm}
+    return render(request,'register.html',context)
+
+
+
